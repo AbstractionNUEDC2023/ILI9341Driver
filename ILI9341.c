@@ -82,7 +82,7 @@ void writeGraphicsRAM(uint16_t Data) { LCDPtr->Data = Data; }
  * @param arraySize Length of the array
  * @return None
  */
-void writeArrayIntoGraphicsRAM(uint16_t *arrayPtr, size_t arraySize) {
+void writeArrayIntoGraphicsRAM(uint16_t *arrayPtr, uint32_t arraySize) {
   while (arraySize--)
     ILI9341_DATA_ADDRESS = *arrayPtr++;
 }
@@ -92,7 +92,7 @@ void writeArrayIntoGraphicsRAM(uint16_t *arrayPtr, size_t arraySize) {
  * @param arraySize Read buffer's size
  * @return None
  */
-void readArrayFromGraphicsRAM(uint16_t *arrayPtr, size_t arraySize) {
+void readArrayFromGraphicsRAM(uint16_t *arrayPtr, uint32_t arraySize) {
   while (arraySize--)
     *arrayPtr++ = ILI9341_DATA_ADDRESS;
 }
@@ -483,12 +483,12 @@ typedef struct {
   float x;
   float y;
 } PointF_s;
-PointF_s bezierInterpolate(float t, PointF_s* points, size_t pointNum){
+PointF_s bezierInterpolate(float t, PointF_s* points, uint32_t pointNum){
   PointF_s pointBuffer[64] = {0};
   if(pointNum<=0) return pointBuffer[0];
   pointNum = pointNum <= 64 ? pointNum : 64;
-  for(size_t i = 1; i < pointNum; i++){
-    for(size_t j = 0; j < pointNum - i; j++){
+  for(uint32_t i = 1; i < pointNum; i++){
+    for(uint32_t j = 0; j < pointNum - i; j++){
       if(i == 1) {
         pointBuffer[j].x = points[j].x * (1 - t) + points[j + 1].x * t;
         pointBuffer[j].y = points[j].y * (1 - t) + points[j + 1].y * t;

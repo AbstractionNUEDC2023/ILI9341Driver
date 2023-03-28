@@ -1,4 +1,5 @@
 #include "ILI9341.h"
+
 void ILI9341TestFunction(void){
     ILI9341Initialize();
     ILI9341BacklightControl(1);
@@ -10,10 +11,7 @@ void ILI9341TestFunction(void){
     ILI9341DrawTriangle(200, 200, 0, 200, 0, 319, RGB565_WHITE); // Verified
     ILI9341DrawString(100, 300, "Hello,ILI9341!", Font_07x10, RGB565_BLUE, RGB565_CYAN); // Verified
     ILI9341DrawLine(0, 0, 240, 320, RGB565_RED); // Verified
-    uint8_t invert = 0;
     while(1) {
-        ILI9341ColorInvert(invert);
-        HAL_Delay(1000);
-        invert = invert == 0 ? 1 : 0;
+        
     }
 }
