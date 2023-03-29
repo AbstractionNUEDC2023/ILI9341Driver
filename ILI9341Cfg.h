@@ -29,7 +29,7 @@
  * @details 0 for vertical, 1 for horizontal and 2 for vertical mirror, 3 for
  * horizontal mirror
  */
-#define ILI9341_SCREEN_ORIENTATION 0
+#define ILI9341_SCREEN_ORIENTATION 2
 /**
  * @brief Run the test function or not
  */
